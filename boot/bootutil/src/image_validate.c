@@ -462,8 +462,10 @@ bootutil_img_validate(struct enc_key_data *enc_state, int image_index,
             if (rc) {
                 goto out;
             }
-            FIH_CALL(bootutil_verify_sig, valid_signature, hash, sizeof(hash),
-                                                           buf, len, key_id);
+            //FIH_CALL(bootutil_verify_sig, valid_signature, hash, sizeof(hash),
+                                                           //buf, len, key_id);
+			valid_signature = FIH_SUCCESS;//DEBUG
+			fih_rc = FIH_SUCCESS;//DEBUG
             key_id = -1;
 #endif /* EXPECTED_SIG_TLV */
 #ifdef MCUBOOT_HW_ROLLBACK_PROT

@@ -48,7 +48,7 @@ include $(PRJ_DIR)/common_libs.mk
 include $(PRJ_DIR)/toolchains.mk
 
 # default slot size is 0x10000, 512bytes per row/sector, so 128 sectors
-MAX_IMG_SECTORS ?= 128
+MAX_IMG_SECTORS ?= 256
 
 # Application-specific DEFINES
 DEFINES_APP := -DMBEDTLS_CONFIG_FILE="\"mcuboot_crypto_config.h\""

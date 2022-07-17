@@ -65,7 +65,7 @@ MEMORY
      */
     public_ram        (rw)    : ORIGIN = 0x08000000, LENGTH = 0x800
     ram               (rwx)   : ORIGIN = 0x08000800, LENGTH = 0x1F800
-    flash             (rx)    : ORIGIN = 0x10000000, LENGTH = 0x18000
+    flash             (rx)    : ORIGIN = 0x10060000, LENGTH = 0x18000
 
     /* This is a 32K flash region used for EEPROM emulation. This region can also be used as the general purpose flash.
      * You can assign sections to this memory region for only one of the cores.

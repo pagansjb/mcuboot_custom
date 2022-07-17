@@ -61,7 +61,6 @@ typedef struct
  * 2) Placing it at an absolute location via a the linker script
  * 3) Using 'cymcuelftool -S' to recompute the checksum and patch the elf file after linking
  */
-CY_SECTION(".cy_sflash_user_data") __attribute__( (used) )
 /* const stc_smif_ipblocks_arr_t smifIpBlocksArr = {&smifBlockConfig_sfdp, 0x00000000}; */
 /* if used zero-pointer to config, DAP link will use hardcoded config for CY8CPROTO-062-4343W */
 const stc_smif_ipblocks_arr_t smifIpBlocksArr = {0x00000000, 0x00000000};
@@ -74,22 +73,6 @@ const stc_smif_ipblocks_arr_t smifIpBlocksArr = {0x00000000, 0x00000000};
  * other values in the ToC which must be updated if any other value changes. This can be done manually
  * or by running 'cymcuelftool -S' to recompute the checksum.
  */
-CY_SECTION(".cy_toc_part2") __attribute__( (used) )
-const uint32_t cyToc[128] =
-{
-    0x200-4,                /* Offset=0x0000: Object Size, bytes */
-    0x01211220,             /* Offset=0x0004: Magic Number (TOC Part 2, ID) */
-    0,                      /* Offset=0x0008: Key Storage Address */
-    (int)&smifIpBlocksArr,  /* Offset=0x000C: This points to a null terminated array of SMIF structures. */
-    0x10000000u,            /* Offset=0x0010: App image start address */
-                            /* Offset=0x0014-0x01F7: Reserved */
-    [126] =  0x000002C2,    /* Offset=0x01F8: Bits[ 1: 0] CLOCK_CONFIG (0=8MHz, 1=25MHz, 2=50MHz, 3=100MHz)
-                                              Bits[ 4: 2] LISTEN_WINDOW (0=20ms, 1=10ms, 2=1ms, 3=0ms, 4=100ms)
-                                              Bits[ 6: 5] SWJ_PINS_CTL (0/1/3=Disable SWJ, 2=Enable SWJ)
-                                              Bits[ 8: 7] APP_AUTHENTICATION (0/2/3=Enable, 1=Disable)
-                                              Bits[10: 9] FB_BOOTLOADER_CTL: UNUSED */
-    [127] =  0x3BB30000     /* Offset=0x01FC: CRC16-CCITT (the upper 2 bytes contain the CRC and the lower 2 bytes are 0) */
-};
 
 /** \} group_serial_flash_variables */
 

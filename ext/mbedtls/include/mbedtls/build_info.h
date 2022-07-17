@@ -78,6 +78,5 @@
 #include "mbedtls/config_psa.h"
 #endif
 
-#include "mbedtls/check_config.h"
 
 #endif /* MBEDTLS_BUILD_INFO_H */
